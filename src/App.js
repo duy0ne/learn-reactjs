@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Duy0ne Learn React Pro
+          Duy0ne Learn React Pro Pro
         </a>
       </header>
     </div>
