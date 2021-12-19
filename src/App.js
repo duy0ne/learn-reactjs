@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Fragment } from 'react';
+import Dashboard from './pages/dashboard/Dashboard';
+import Features from './pages/features/Features';
+import Administrator from './pages/adminstrator/Administrator';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Duy0ne Learn React Pro Pro
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <nav>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/feature">Feature</Link>
+        <Link to="/administrator">Administrator</Link>
+      </nav>
+
+
+      <Routes>
+        <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/feature/*" element={<Features />} />
+        <Route path="/administrator/*" element={<Administrator />} />
+      </Routes>
+    </Fragment>
   );
 }
 
