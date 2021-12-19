@@ -2,9 +2,9 @@
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Fragment } from 'react';
-import Dashboard from './pages/dashboard/Dashboard';
 import Features from './pages/features/Features';
 import Administrator from './pages/adminstrator/Administrator';
+import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
 
 
       <Routes>
+        {/* <Route path="/" element={<Dashboard />} /> */}
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/feature/*" element={<Features />} />
         <Route path="/administrator/*" element={<Administrator />} />
