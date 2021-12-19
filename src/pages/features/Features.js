@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Fragment } from 'react/cjs/react.production.min';
+// import PropTypes from 'prop-types';
+// import { Fragment } from 'react/cjs/react.production.min';
 import SideBar from './sideBar/SideBar';
 import { Route, Routes } from 'react-router-dom';
 import ContentPush from './contentPush/ContentPush';
