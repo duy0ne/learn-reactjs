@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import SideBar from '../features/sideBar/SideBar';
 import { Route, Routes } from 'react-router-dom';
 import KpiMap from './kpiMap/KpiMap';

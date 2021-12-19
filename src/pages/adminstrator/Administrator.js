@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import SideBar from './sideBar/SideBar';
 import { Route, Routes } from 'react-router-dom';
 import User from './user/user';
