@@ -1,8 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import SideBar from '../features/sideBar/SideBar';
-import { Route, Routes } from 'react-router-dom';
-import KpiMap from './kpiMap/KpiMap';
+import { Outlet } from 'react-router-dom';
+import SideBar from './sideBar/SiderBar';
+
 
 Dashboard.propTypes = {
 
@@ -16,10 +15,7 @@ function Dashboard(props) {
           <SideBar></SideBar>
         </div>
         <div className="col-8">
-          <Routes>
-            <Route path="kpi-map" element={<KpiMap />} />
-            <Route path="kpi-detail" element={<kpiDetail />} />
-          </Routes>
+          <Outlet />
         </div>
       </div>
     </div>

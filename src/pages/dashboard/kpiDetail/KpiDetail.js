@@ -1,11 +1,11 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-kpiDetail.propTypes = {
+KpiDetail.propTypes = {
 
 };
 
-function kpiDetail(props) {
+function KpiDetail(props) {
   return (
     <div>
       <h1>KpiDetail</h1>
@@ -13,4 +13,4 @@ function kpiDetail(props) {
   );
 }
 
-export default kpiDetail;
+export default KpiDetail;
