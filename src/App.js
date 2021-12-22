@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Features from './pages/features/Features';
 import Administrator from './pages/adminstrator/Administrator';
 import Dashboard from './pages/dashboard/Dashboard';
@@ -12,16 +11,13 @@ import KpiMap from './pages/dashboard/kpiMap/KpiMap';
 import User from './pages/adminstrator/user/user';
 import Device from './pages/adminstrator/device/Device';
 import NotFound from './pages/notFound/NotFound';
+import { Container } from '@mui/material';
+import ResponsiveAppBar from './common/header/header';
 
 function App() {
   return (
-    <Fragment>
-      <nav>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/feature">Feature</Link>
-        <Link to="/administrator">Administrator</Link>
-      </nav>
-
+    <Container maxWidth="lg">
+      <ResponsiveAppBar></ResponsiveAppBar>
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} >
@@ -39,7 +35,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Fragment>
+    </Container>
   );
 }
 
