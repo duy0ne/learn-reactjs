@@ -1,5 +1,5 @@
-import useMagicColor from 'hook/useMagicColor/useMagicColor';
 import React from 'react';
+import useMagicColor from '../../../../hook/useMagicColor/useMagicColor';
 import './BoxColor.scss';
 
 BoxColor.propTypes = {

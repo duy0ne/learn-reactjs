@@ -19,7 +19,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Register from '../auth/register/Register';
 
-const pages = [{ name: 'Dashboard', path: '/dashboard' }, { name: 'Features', path: '/feature' }, { name: 'Admin', path: '/administrator' }];
+const pages = [
+  { name: 'Dashboard', path: '/dashboard' },
+  { name: 'Features', path: '/feature' },
+  { name: 'Admin', path: '/administrator' },
+  { name: 'Survey', path: '/survey' }];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 

@@ -13,6 +13,7 @@ import Device from './pages/adminstrator/device/Device';
 import NotFound from './pages/notFound/NotFound';
 import { Container } from '@mui/material';
 import ResponsiveAppBar from './common/header/header';
+import Survey from './pages/survey/Survey';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="user" element={<User />} />
           <Route path="device" element={<Device />} />
         </Route>
+        <Route path="/survey" element={<Survey />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>

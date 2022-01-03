@@ -5,8 +5,8 @@ import Pagination from './pagination/Pagination';
 import PostList from './postList/PostList';
 import queryString from 'query-string';
 import Clock from './clock/Clock';
+import useClock from '../../../hook/clock/useClock';
 import BoxColor from './boxColor/BoxColor';
-import useClock from 'hook/clock/useClock';
 
 Quickaccess.propTypes = {
 

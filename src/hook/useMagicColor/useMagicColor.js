@@ -21,11 +21,15 @@ function useMagicColor(props) {
   const currentColor = useRef(null);
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       const newColor = handleRadomColor(currentColor.current);
       currentColor.current = newColor;
       setColor(newColor);
     }, 4000);
+
+    return () => {
+      clearInterval(interval);
+    }
   }, [])
 
   return { color };
