@@ -12,31 +12,44 @@ import User from './pages/adminstrator/user/user';
 import Device from './pages/adminstrator/device/Device';
 import NotFound from './pages/notFound/NotFound';
 import { Container } from '@mui/material';
-import ResponsiveAppBar from './common/header/header';
 import Survey from './pages/survey/Survey';
+import Layout from './Layout';
+import Login from './pages/login/Login';
 
 function App() {
+  // const jwt = 'duy';
+  // if (jwt) {
+  //   window.location.href = '/';
+  // } else {
+  //   window.location.href = '/login';
+  // }
+
   return (
     <Container maxWidth="lg">
-      <ResponsiveAppBar></ResponsiveAppBar>
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route path="/dashboard" element={<Dashboard />} >
-          <Route path="kpi-detail" element={<KpiDetail />} />
-          <Route path="kpi-map" element={<KpiMap />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<Layout />}>
+          <Route>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<Dashboard />} >
+              <Route path="kpi-detail" element={<KpiDetail />} />
+              <Route path="kpi-map" element={<KpiMap />} />
+            </Route>
+            <Route path="/feature" element={<Features />} >
+              <Route path="contentpush" element={<ContentPush />} />
+              <Route path="quickaccess" element={<Quickaccess />} />
+            </Route>
+            <Route path="/administrator" element={<Administrator />} >
+              <Route path="user" element={<User />} />
+              <Route path="device" element={<Device />} />
+            </Route>
+            <Route path="/survey" element={<Survey />}></Route>
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Route>
-        <Route path="/feature" element={<Features />} >
-          <Route path="contentpush" element={<ContentPush />} />
-          <Route path="quickaccess" element={<Quickaccess />} />
-        </Route>
-
-        <Route path="/administrator" element={<Administrator />} >
-          <Route path="user" element={<User />} />
-          <Route path="device" element={<Device />} />
-        </Route>
-        <Route path="/survey" element={<Survey />}></Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
+      {/* </Layout> */}
+
     </Container>
   );
 }
