@@ -27,11 +27,11 @@ function RegisterForm(props) {
         return value.split(' ').length >= 2
       }),
     emaill: yup.string().required('Please enter Email!').email('Please enter a email valid address'),
-    password: yup.string().required('Please enter Password')
-      .matches(
-        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-      ),
+    password: yup.string().required('Please enter Password'),
+    // .matches(
+    //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+    //   "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+    // ),
     retypePassword: yup.string().required('Please retype Password').min(5, 'FullName is too short').oneOf([yup.ref('password')], 'Password is not match')
     // .matches('^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z])$',
     //   'Ensure string has two uppercase letter, one special case letter, two digits, three lowercase letters, length 8 and end anchor.')
