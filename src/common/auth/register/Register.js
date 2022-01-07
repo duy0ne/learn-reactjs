@@ -15,10 +15,9 @@ function Register(props) {
     const action = register(value);
     const resultAction = await dispatch(action);
     const userRegisterInfo = unwrapResult(resultAction);
-    console.log(userRegisterInfo);
-    // registerUser(value).then((res) => {
-    //   console.log(res);
-    // })
+    if (userRegisterInfo) {
+      return;
+    }
   }
 
   return (

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import ResponsiveAppBar from './common/header/header';
+import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import ResponsiveAppBar from './common/header/header';
 
 Layout.propTypes = {
 

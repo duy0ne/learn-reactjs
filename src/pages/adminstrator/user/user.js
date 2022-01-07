@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decreate, increate } from '../adminstratorSlice';
+import { increate } from '../adminstratorSlice';
 // import PropTypes from 'prop-types';
 
 User.propTypes = {
