@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { post } from '../../api/AxiosClient';
 
 const URL_REGISTER = 'auth/local/register';

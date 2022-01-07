@@ -1,6 +1,7 @@
 import axios from "axios";
 import queryString from 'query-string';
-import * as Urls from '../../src/utils/constants/Urls'
+import * as Urls from '../../src/utils/constants/Urls';
+import enqueueSnackbarCustom from "../utils/SnackbarUtils";
 
 //CASE 1
 
@@ -24,7 +25,22 @@ axiosClient.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 axiosClient.interceptors.response.use(undefined, function (error) {
-  console.log(error);
+  // const { enqueueSnackbar } = useSnackbar();
+  const { data, config, status } = error.response;
+  if (config.url === 'auth/local' && status === 400) {
+    const errList = data.data ? data.data : [];
+    const firstErr = errList.length > 0 ? errList[0] : {};
+    const listMes = firstErr.messages ? firstErr.messages : [];
+    const firstMes = listMes.length > 0 ? listMes[0] : {};
+    const errMessage = firstMes.message ? firstMes.message : '';
+
+    enqueueSnackbarCustom.error(errMessage);
+
+    // enqueueSnackbar(errMessage, { variant: 'success' });
+  }
+  //const messageError = error['message'][0]['messages'][0]['message'];
+
+  console.log(error.response);
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
   return Promise.reject(error);

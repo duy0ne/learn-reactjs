@@ -1,10 +1,9 @@
+import { unwrapResult } from '@reduxjs/toolkit';
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 import LoginForm from '../../common/auth/loginForm/LoginForm';
 import { login } from '../../common/auth/userSlice';
-import { useDispatch } from 'react-redux';
-import { unwrapResult } from '@reduxjs/toolkit';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 Login.propTypes = {
 
@@ -28,7 +27,6 @@ function Login(props) {
       console.log(error)
     }
   }
-  console.log(isAuthentication());
   if (isAuthentication()) {
     return <Navigate to="/" />
   }
