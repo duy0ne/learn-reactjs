@@ -15,6 +15,7 @@ import { Container } from '@mui/material';
 import Survey from './pages/survey/Survey';
 import Layout from './Layout';
 import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 function App() {
   // const jwt = 'duy';
@@ -28,6 +29,7 @@ function App() {
     <Container maxWidth="lg">
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route element={<Layout />}>
           <Route>
             <Route path="/" element={<Navigate to="/dashboard" />} />

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { JWT_USER_LOGIN, JWT_USER_REGISTER, LOGIN_INFO, REGISTER_INFO } from "../../utils/constants/Constants";
 import { loginUser, registerUser } from "./AuthService";
 
 const initialSate = {
@@ -11,8 +12,8 @@ export const register = createAsyncThunk('users/register',
   async (payload) => {
     const dataRegister = await registerUser(payload);
 
-    localStorage.setItem('access_token', dataRegister.data.jwt);
-    localStorage.setItem('registerInfo', JSON.stringify(dataRegister.data.user));
+    localStorage.setItem(JWT_USER_REGISTER, dataRegister.data.jwt);
+    localStorage.setItem(REGISTER_INFO, JSON.stringify(dataRegister.data.user));
 
     return dataRegister.data.user;
   })
@@ -21,8 +22,8 @@ export const login = createAsyncThunk('user/login',
   async (payload) => {
     const dataLogin = await loginUser(payload);
 
-    localStorage.setItem('access_token', dataLogin.data.jwt);
-    localStorage.setItem('loginInfo', JSON.stringify(dataLogin.data.user));
+    localStorage.setItem(JWT_USER_LOGIN, dataLogin.data.jwt);
+    localStorage.setItem(LOGIN_INFO, JSON.stringify(dataLogin.data.user));
 
     return dataLogin.data.user;
   })

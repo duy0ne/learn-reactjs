@@ -36,10 +36,15 @@ axiosClient.interceptors.response.use(undefined, function (error) {
 
     enqueueSnackbarCustom.error(errMessage);
 
-    // enqueueSnackbar(errMessage, { variant: 'success' });
-  }
-  //const messageError = error['message'][0]['messages'][0]['message'];
+  } else if (config.url === 'auth/local/register' && status === 400) {
+    const errList = data.data ? data.data : [];
+    const firstErr = errList.length > 0 ? errList[0] : {};
+    const listMes = firstErr.messages ? firstErr.messages : [];
+    const firstMes = listMes.length > 0 ? listMes[0] : {};
+    const errMessage = firstMes.message ? firstMes.message : '';
 
+    enqueueSnackbarCustom.error(errMessage);
+  }
   console.log(error.response);
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error

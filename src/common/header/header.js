@@ -46,9 +46,9 @@ const ResponsiveAppBar = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -135,7 +135,7 @@ const ResponsiveAppBar = () => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Typography
+              {/* <Typography
                 onClick={handleClickOpen}
                 sx={{ cursor: 'pointer' }}
                 variant="h6"
@@ -143,7 +143,7 @@ const ResponsiveAppBar = () => {
                 component="div"
               >
                 REGISTER
-              </Typography>
+              </Typography> */}
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import ResponsiveAppBar from './common/header/header';
+import { JWT_USER_LOGIN } from './utils/constants/Constants';
 
 Layout.propTypes = {
 
 };
 
 const isAuthentication = () =>
-  localStorage.getItem('access_token') && true;
+  localStorage.getItem(JWT_USER_LOGIN) && true;
 
 function Layout(props) {
   //const isAuthentication = false;

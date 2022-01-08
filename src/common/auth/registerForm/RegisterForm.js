@@ -5,9 +5,10 @@ import { useForm } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { Avatar, Button, Typography } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Avatar, Box, Button, Typography } from '@mui/material';
 import PasswordFieds from '../../formControls/PasswordField';
+import { NavLink } from 'react-router-dom';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 RegisterForm.propTypes = {
   onSubmitByMe: PropTypes.func,
@@ -50,28 +51,31 @@ function RegisterForm(props) {
   }
 
   return (
-    <div>
+    <>
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main', margin: 'auto' }}>
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5" align="center">
         Sign up
       </Typography>
-      <form onSubmit={handleSubmit(handleSubmitByMe)}>
-        <InputField name="fullName" lable="Full Name" control={control} formState={formState}></InputField>
-        <InputField name="emaill" lable="Email" control={control} formState={formState}></InputField>
-        <PasswordFieds name="password" lable="Password" control={control} formState={formState}></PasswordFieds>
-        <PasswordFieds name="retypePassword" lable="Retype Password" control={control} formState={formState}></PasswordFieds>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Sign Up
-        </Button>
-      </form>
-    </div>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <form onSubmit={handleSubmit(handleSubmitByMe)} style={{ width: "50%" }}>
+          <InputField name="fullName" lable="Full Name" control={control} formState={formState}></InputField>
+          <InputField name="emaill" lable="Email" control={control} formState={formState}></InputField>
+          <PasswordFieds name="password" lable="Password" control={control} formState={formState}></PasswordFieds>
+          <PasswordFieds name="retypePassword" lable="Retype Password" control={control} formState={formState}></PasswordFieds>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign Up
+          </Button>
+          <NavLink to="/login">Already have an account? Sign in</NavLink>
+        </form>
+      </Box>
+    </>
   );
 }
 

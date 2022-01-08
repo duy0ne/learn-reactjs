@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import LoginForm from '../../common/auth/loginForm/LoginForm';
 import { login } from '../../common/auth/userSlice';
+import { JWT_USER_LOGIN } from '../../utils/constants/Constants';
 
 Login.propTypes = {
 
 };
 
 const isAuthentication = () =>
-  localStorage.getItem('access_token') && true;
+  localStorage.getItem(JWT_USER_LOGIN) && true;
 
 function Login(props) {
   const dispatch = useDispatch();
@@ -20,8 +21,9 @@ function Login(props) {
       const action = login(value);
       const resultAction = await dispatch(action);
       const userLoginInfo = unwrapResult(resultAction);
-      navigate('/');
-      console.log(userLoginInfo);
+      if (userLoginInfo) {
+        navigate('/');
+      }
 
     } catch (error) {
       console.log(error)
