@@ -37,7 +37,7 @@ function RegisterForm(props) {
     //   'Ensure string has two uppercase letter, one special case letter, two digits, three lowercase letters, length 8 and end anchor.')
   });
 
-  const { handleSubmit, control, register, formState, reset } = useForm({ defaultValues, resolver: yupResolver(schema) });
+  const { handleSubmit, control, formState } = useForm({ defaultValues, resolver: yupResolver(schema) });
   const { onSubmitByMe } = props;
 
 
