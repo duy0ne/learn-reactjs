@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ConcreateMediator from '../ConcreateMediator';
 import Content from './content/Content';
 import Header from './header/Header';
@@ -7,9 +7,10 @@ Survey.propTypes = {
 
 };
 
-const mediator = new ConcreateMediator();
+let mediator: any;
 
 function Survey() {
+  mediator = useRef(new ConcreateMediator());
 
   const handleSubmit = () => {
 
@@ -18,7 +19,7 @@ function Survey() {
   return (
     <div>
       <Header></Header>
-      <Content onSubmit={handleSubmit} mediator={mediator}></Content>
+      <Content onSubmit={handleSubmit} mediator={mediator.current}></Content>
     </div>
   );
 }

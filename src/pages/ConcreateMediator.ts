@@ -1,10 +1,10 @@
 import IMediator from "./IMediator";
 
 class ConcreateMediator implements IMediator {
-  private onDisable: Array<Function>;
+  private onDisable: any;
 
   constructor() {
-    this.onDisable = [];
+    this.onDisable = new Map<number, Function>();
   }
 
   setOnDisable(questionNum: number, cbFn: Function): void {
