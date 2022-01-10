@@ -7,26 +7,14 @@ class ConcreateMediator implements IMediator {
     this.onDisable = new Map<number, Function>();
   }
 
-  setOnDisable(questionNum: number, cbFn: Function): void {
-    switch (questionNum) {
-      case 2:
-        this.onDisable[questionNum] = cbFn;
-        break;
-
-      default:
-        break;
-    }
+  setOnDisable(IMediatorKey: number, cbFn: Function): void {
+    this.onDisable.set(IMediatorKey, cbFn);
   }
 
-  setDisable(questionNum: number, value: boolean): void {
-    switch (questionNum) {
-      case 1:
-        this.onDisable[2] && this.onDisable[2](value);
-        break;
-
-      default:
-        break;
-    }
+  setDisable(targetKey: number, value: boolean): void {
+    this.onDisable.forEach((cbFn: Function) => {
+      cbFn(targetKey, value);
+    });
   }
 }
 

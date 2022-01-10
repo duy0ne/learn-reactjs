@@ -1,6 +1,7 @@
 interface IMediator {
-  setDisable(questionNum: Number, value: boolean): void;
-  setOnDisable(questionNum: Number, cbFn: Function): void;
+  setDisable(keyIMediator: Number, value: boolean): void;
+  setOnDisable(keyIMediator: Number, cbFn: Function): void;
+  //setAns
 }
 
 export default IMediator;

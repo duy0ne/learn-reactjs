@@ -3,23 +3,23 @@ import IMediator from '../../../IMediator';
 import Radio from '../../uiControl/RadioButton';
 
 interface IQuestionYesNo {
-  questionNum: number;
+  IMediatorKey: number;
   questionName: string;
   mediator: IMediator
 }
 
-const QuestionYesNo: FC<IQuestionYesNo> = ({ questionNum, questionName, mediator }) => {
+const QuestionYesNo: FC<IQuestionYesNo> = ({ IMediatorKey, questionName, mediator }) => {
   const [ans, setAns] = useState('');
 
   const handleAns = (key: string) => {
-    mediator.setDisable(questionNum, key === 'No')
+    mediator.setDisable(IMediatorKey, key === 'No')
     setAns(key);
   }
 
   return (
     <>
       <p>
-        {questionNum}. {questionName}
+        {IMediatorKey}. {questionName}
       </p>
       <div>
         <Radio

@@ -3,19 +3,21 @@ import IMediator from '../../../IMediator';
 import TextArea from '../../uiControl/TextArea';
 
 interface IAnswer {
-  questionNum: number;
+  IMediatorKey: number;
   questionName: string;
   questionPlaceHolder: string;
   mediator: IMediator
 }
 
-const Answer: FC<IAnswer> = ({ questionNum, questionName, questionPlaceHolder, mediator }) => {
+const Answer: FC<IAnswer> = ({ IMediatorKey, questionName, questionPlaceHolder, mediator }) => {
   const [dataText, setDataText] = useState('');
   const [disable, setDisable] = useState(false);
 
   useEffect(() => {
-    mediator.setOnDisable(questionNum, (value: boolean) => {
-      setDisable(!value)
+    mediator.setOnDisable(IMediatorKey, (targetKey: number, value: boolean) => {
+      if (IMediatorKey === 3 && targetKey === 1) {
+        setDisable(!value)
+      }
     })
   })
 
@@ -26,7 +28,7 @@ const Answer: FC<IAnswer> = ({ questionNum, questionName, questionPlaceHolder, m
   return (
     <>
       <p>
-        {questionNum}. {questionName}
+        {IMediatorKey}. {questionName}
       </p>
       <div>
         <TextArea
