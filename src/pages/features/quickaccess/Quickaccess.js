@@ -47,7 +47,7 @@ function Quickaccess(props) {
     console.log('useEffect1');
     const getData = async () => {
       const paramsString = queryString.stringify({ ...filter });
-      const url = `http://js-post-api.herokuapp.com/api/posts?${paramsString}`;
+      const url = `https://js-post-api.herokuapp.com/api/posts?${paramsString}`;
 
       const dataRes = await fetch(url);
       const dataJSON = await dataRes.json();
