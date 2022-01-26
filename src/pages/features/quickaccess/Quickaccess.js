@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from './form/Form';
 import List from './list/List';
 import Pagination from './pagination/Pagination';
@@ -7,6 +7,7 @@ import queryString from 'query-string';
 import Clock from './clock/Clock';
 import useClock from '../../../hook/clock/useClock';
 import BoxColor from './boxColor/BoxColor';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 Quickaccess.propTypes = {
 
@@ -14,51 +15,65 @@ Quickaccess.propTypes = {
 
 
 function Quickaccess(props) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const listData = [{ id: 1, name: 'khanh duy' }, { id: 2, name: 'hoang thuong' }, { id: 3, name: 'khanh an' }];
   const [list, setList] = useState(listData);
   const [datas, setDatas] = useState([]);
   const [lable, setLable] = useState(0);
   const [val, setVal] = useState(true);
-  const [filter, setFilter] = useState({
-    _page: 1,
-    _limit: 10,
-    _totalRows: 50,
-    title_like: ''
-  })
-  const currentFilter = useRef({
-    _page: 1,
-    _limit: 10,
-    _totalRows: 50,
-    title_like: ''
-  });
   const [pagination, setPagination] = useState({
     _page: 1,
     _limit: 10,
     _totalRows: 50
   })
 
+  const [filter, setFilter] = useState(() => {
+    const params = queryString.parse(location.search);
+    const filter = {
+      _page: params._page ? params._page : 1,
+      _limit: params._limit ? params._limit : 10,
+      _totalRows: params._totalRows ? params._totalRows : 50,
+      title_like: params.title_like ? params.title_like : ''
+    }
+
+    return filter;
+  });
+
+
   const [isShowClock, setIsShowClock] = useState(true);
 
   useEffect(() => {
     console.log('useEffect1');
+    const getData = async () => {
+      const paramsString = queryString.stringify({ ...filter });
+      const url = `http://js-post-api.herokuapp.com/api/posts?${paramsString}`;
+
+      const dataRes = await fetch(url);
+      const dataJSON = await dataRes.json();
+
+      setDatas(dataJSON.data);
+      setPagination(dataJSON.pagination);
+
+      return () => {
+        console.log('test clean up1!')
+      }
+    }
     getData();
   }, [filter]);
 
-  const getData = async () => {
-    const newFilter = currentFilter.current;
-    const paramsString = queryString.stringify(newFilter);
-    const url = `http://js-post-api.herokuapp.com/api/posts?${paramsString}`;
-
-    const dataRes = await fetch(url);
-    const dataJSON = await dataRes.json();
-
-    setDatas(dataJSON.data);
-    setPagination(dataJSON.pagination);
-
-    return () => {
-      console.log('test clean up1!')
+  useEffect(() => {
+    const params = queryString.parse(location.search);
+    const filter = {
+      _page: params._page ? params._page : 1,
+      _limit: params._limit ? params._limit : 10,
+      _totalRows: params._totalRows ? params._totalRows : 50,
+      title_like: params.title_like ? params.title_like : ''
     }
-  }
+
+    setFilter(filter);
+  }, [location.search])
+
 
   useEffect(() => {
     console.log('useEffect2')
@@ -78,12 +93,12 @@ function Quickaccess(props) {
   }
 
   const handleOnSubmit = (val) => {
-    currentFilter.current = { ...filter, _page: 0, title_like: val };
-    setFilter({
+    const queryParams = {
       ...filter,
       _page: 0,
       title_like: val
-    })
+    }
+    navigate(`${location.pathname}?${queryString.stringify(queryParams)}`);
   }
 
   const handleOnClick = () => {
@@ -91,11 +106,11 @@ function Quickaccess(props) {
   }
 
   const handleChangePage = (page) => {
-    currentFilter.current = { ...filter, _page: page };
-    setFilter({
-      ...filter,
-      _page: page
-    })
+    console.log('page', page);
+    const queryParams = {
+      ...filter, _page: page
+    }
+    navigate(`${location.pathname}?${queryString.stringify(queryParams)}`);
   }
 
   const handeHideClock = () => {
