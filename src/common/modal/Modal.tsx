@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './modal.scss'
-import classNames from 'classnames'
 
 export interface ModalProps {
   isShowModal: boolean,
@@ -10,7 +9,6 @@ export interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isShowModal, footer, onCloseModal, titleModal }: ModalProps) => {
-  const [isShow, setIsShow] = useState(false)
 
   const handleCloseModal = () => {
     if (onCloseModal) {
